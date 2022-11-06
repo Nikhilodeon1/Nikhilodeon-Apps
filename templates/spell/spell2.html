@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Spelling Test | Nikhilodeon/Nik-Spell</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+  </head>
+  <style media="screen">
+    body {
+      background:#ebf7a8;
+      color:black;
+      font-family: sans-serif;
+    }
+    .a {
+      background:white;
+      border-radius:20px;
+      border:2px solid black;
+      margin-left:15%;
+      margin-right:15%;
+      padding:10px;
+      margin-top:6%;
+      padding-left: 75px;
+    }
+    button {
+      padding:10px;
+			background-color:#6a67ce;
+	    color: #FFFFFF;
+			border: 0px;
+      cursor:pointer;
+			border-radius: 5px;
+      border: 2px solid black;
+    }
+    input {
+			    padding: 10px;
+			    width: 300px;
+			    border-radius: 5px;
+			    border: solid 2px #BBB;
+			}
+      hr {
+        border-top: 5px solid black;
+      }
+  </style>
+  <body>
+    <br>
+    <a href="/spell"><button type="button" name="button"><i class="fa fa-home" style="font-size:50px"></i></button></a>
+    <br>
+    <div class="a">
+
+      <h1 style="margin-left:30px;">{{ title }}</h1><br><br>
+      <h4>In this test you will get some words to spell.<br>click the play button for each question to hear the word that you need to spell.when you are done click on the button that says submit.</h4><br>
+      <button type="button" id="button">Start the quiz !</button>    </div><br>
+<div class="a bob">
+{% set num3 = namespace(value = 0) %}
+      {% for counter3 in words %}
+
+      <div class="inner{{ num3.value + 1 }}"><br><hr>
+        <h3>Question {{ num3.value + 1 }}/{{ end_num }}</h3>
+        <button type="button" id="button{{ num3.value + 1 }}" onclick="textToAudio()" style="margin-left:30%"><i class="fa fa-play" style="font-size:24px"></i></button><br><br>
+        <input type="text" id="text{{ num3.value + 1 }}" placeholder="spelling of the word">
+        <button type="button" id="submit{{ num3.value + 1 }}">Submit</button><br><br>
+        <p id="message{{ num3.value + 1 }}"></p><br>
+      </div>
+      {% set num3.value = num3.value + 1 %}
+      {% endfor %}
+</div>
+
+    <div id="done">
+      <form id="dh0d" action="/spell/done" method="post">
+        <input id="b" style="display:none" type="text" name="from" value="{{ froms }}">
+        <input id="a" style="display:none" type="text" name="streak" value="">
+        <input id="c" style="display:none" type="text" name="correct_num" value="">
+        <input id="d" style="display:none" type="text" name="wrong_num" value="">
+        <br><button type="submit">Submit</button>
+      </form>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$('.bob').hide()
+{% set num2 = namespace(value = 0) %}
+{% for counter2 in words %}
+$('.inner{{ num2.value + 1 }}').hide()
+{% set num2.value = num2.value + 1 %}
+{% endfor %}
+$('#done').hide()
+  $('#button').on('click', function() {
+    $('.inner1').show(1500)
+$('.bob').show(1500)
+  })
+  $word = []
+  $level = []
+  {% for elm in words%}
+  $word.push('{{ elm }}')
+  {% endfor %}
+  $list = []
+  var $randomItem
+  for (var i = 0; i < {{ end_num }}; i++) {
+    $randomItem = $word[Math.floor(Math.random()*$word.length)]
+    $list.push($randomItem)
+    $word.splice($.inArray($randomItem, $word),1);
+  }
+  /* JS comes here */
+            function textToAudio(word) {
+                var msg = word
+
+                let speech = new SpeechSynthesisUtterance();
+                speech.lang = "en-US";
+
+                speech.text = msg;
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+
+                window.speechSynthesis.speak(speech);
+            }
+  for (var i = 0; i < $list.length; i++) {
+    $('#button' + (i + 1)).attr('onclick', 'textToAudio("' + $list[i] + '")')
+  }
+  $streak = 0;
+  $correct = []
+  $incorrect = []
+  {% set num = namespace(value = 0) %}
+  {% for counter in words %}
+  $('#submit{{ num.value + 1 }}').on('click', function() {
+    if ($('#text{{ num.value + 1 }}').val().toLowerCase() === $list[{{ num.value }}].toLowerCase()) {
+      $('#message{{ num.value + 1 }}').text('Correct !!')
+      $('#message{{ num.value + 1 }}').css('color', 'green');
+      $streak += 1;
+      $correct.push($list[{{ num.value }}])
+    } else {
+      $('#message{{ num.value + 1 }}').text('Wrong. the correct Answer is ' + $list[{{ num.value }}])
+      $('#message{{ num.value + 1 }}').css('color', 'red');
+      $streak = 0;
+      $incorrect.push($list[{{ num.value }}])
+    }
+    setTimeout(function() {
+$('.bob').hide()
+      $('.inner{{ num.value + 1 }}').hide(1500)
+$('.bob').show()
+      $('.inner{{ num.value + 2 }}').show(1500)
+    }, 1500);
+
+  })
+{% set num.value = num.value + 1 %}
+{% endfor %}
+  $('#submit{{ end_num }}').on('click', function() {
+    $('#done').show()
+    if ($('#text{{ end_num }}').val().toLowerCase() === $list[{{ end_num - 1 }}].toLowerCase()) {
+      $('#message{{ end_num }}').text('Correct !!')
+      $('#message{{ end_num }}').css('color', 'green'); $streak += 1;
+      $correct.push($list[{{ end_num  - 1}}])
+    } else {
+      $('#message{{ end_num }}').text('Wrong. the correct Answer is ' + $list[{{ end_num }}])
+      $('#message{{ end_num }}').css('color', 'red'); $streak = 0;
+      $incorrect.push($list[{{ end_num - 1 }}])
+    }
+    $('#a').val($streak)
+    $('#c').val($correct.length)
+    $('#d').val($incorrect.length)
+    for (var i = 0; i < $correct.length; i++) {
+     $('#dh0d').append('<input style="display:none" type="text" name="c' + (i + 1) + '" value="' + $correct[i] + '">')
+    }
+    for (var i = 0; i < $incorrect.length; i++) {
+      $('#dh0d').append('<input style="display:none" type="text" name="i' + (i + 1) + '" value="' + $incorrect[i] + '">')
+    }
+  })
+
+</script>
+  </body>
+</html>

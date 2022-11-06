@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Nik-Chat | Poll Stats</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='/chat/pic1.PNG')}}">
+</head>
+<body>
+	<form id="form" action="/chat/Chat" method="post">
+		<input type="text" style="display:none" name="show" value="{{ show }}">
+	</form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	$('#form').submit()
+	</script>
+</body>
+</html>

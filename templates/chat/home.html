@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Homepage | Nikhildeon/Nik-Chat</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style>
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      /* Add a gray background color and some padding to the footer */
+    .clap img {
+        width: 52%; /* Set width to 100% */
+        margin: auto;
+        min-height:200px;
+    }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+      }
+    }
+    .clap {
+      overflow-y: hidden;
+      color: black;
+    }
+    img {
+      height: 20%;
+    }
+    .active li {
+      color: black;
+    }
+    .dap img {
+      width: 102.8%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+    }
+    .clap img {
+        width:40%;
+        margin: auto;
+      min-height:100px;
+    }
+    .tood img {
+      width: 74%;
+margin: auto;
+      min-height:100px;
+    }
+    footer {
+      background: #289405;
+      color: white;
+    }
+    .cod {
+    }
+    #spit {
+      text-decoration: none;
+      color: white;
+      font-size: 45px;
+      font-family: fantasy;
+      margin-left: 2%;
+    }
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+figure.snip1206 {
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 220px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+}
+figure.snip1206 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+figure.snip1206 img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+figure.snip1206:after {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  opacity: 0.75;
+  -webkit-transform: skew(-45deg) scaleX(0);
+  transform: skew(-45deg) scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+figure.snip1206 figcaption {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+figure.snip1206 h2,
+figure.snip1206 p {
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+}
+figure.snip1206 h2 {
+  padding: 0 30px;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+figure.snip1206 p {
+  padding: 0 50px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+figure.snip1206 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+figure.snip1206:hover:after,
+figure.snip1206.hover:after {
+  -webkit-transform: skew(-45deg) scaleX(1);
+  transform: skew(-45deg) scaleX(1);
+  transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+figure.snip1206:hover figcaption h2,
+figure.snip1206.hover figcaption h2,
+figure.snip1206:hover figcaption p,
+figure.snip1206.hover figcaption p {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+figure.snip1206:hover figcaption h2,
+figure.snip1206.hover figcaption h2 {
+  opacity: 1;
+}
+figure.snip1206:hover figcaption p,
+figure.snip1206.hover figcaption p {
+  opacity: 1;
+}
+.sing {
+  font-size:35px;
+  color: white;
+}
+figure.snip1206:hover {
+  .sing.display: none;
+}
+.td img {
+  width: 116%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+figure.snip1206:hover {
+  cursor: pointer;
+}
+input {
+  width: 60%;
+  height: 3%;
+}
+.blog {
+  float:right;
+}
+#tapdance {
+  background: #24242405;
+  border: none;
+}
+.tapdance {
+  background: #289405;
+  border: none;
+}
+    </style>
+  </head>
+  <body>
+<div id="navbar">
+  <nav  style="background: #289405;border:none" class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div style="width: 25%;" class="navbar-header">
+      <img width="45" style="border-left:3px solid white" src="/staticfunny.png"><span id="spit"><br>Nik-Chat </span>
+      </div>
+        <ul class="nav navbar-nav">
+          <br><br><br>
+          <li><figure id="toad" class="snip1206"><span class="sing"><span class="glyphicon glyphicon-log-in" style="color:white;font-size:50px"></span> Login<br><br></span><figcaption><h2>Login</h2><p>Lets you log in to the Nik-Poll</p></figcaption></figure></li>
+          <li><a href="{{ url_for('sign_page') }}"><figure class="snip1206"><span class="sing"><span class="fa fa-user-plus" style="color:white;font-size:50px"></span> Create Account<br><br></span><figcaption><h2>Create Account</h2><p>Lets you create A Nik-Poll account</p></figcaption></figure></a></li>
+        </ul>
+    </div>
+    <div class="c" style="border-top:3px solid black">
+    <form id="a" style="margin-left:2.5%" action="/chat/log-in" method="post">
+      <br>
+      <h3><label for="uname">Username:</label></h3>
+      <h3><input type="text" name="uname" placeholder="Your Username" value="{{ uname }}" required></h3>
+      <hr>
+      <h3><label for="psw">Password:</label></h3>
+      <h3><input type="password" name="psw" placeholder="Your Password" required></h3>
+      <hr>
+      <button style="color:white;background: #289405;border:2px solid black;margin-bottom: 1.5%;margin-right:10%;" type="submit">GO</button><button id="hello2" style="color:white;background:red;border:2px solid black" type="submit">Close</button>
+    </form><br>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+     {% for message in messages %}
+        {{ message }}
+     {% endfor %}
+  {% endif %}
+{% endwith %}
+  </div>
+  </nav>
+</div>
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="color:black">
+      <!-- Indicators -->
+      <ol class="carousel-indicators" style="color:black;">
+        <li style="color:black;" style="color:black;"data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li style="color:black;" data-target="#myCarousel" data-slide-to="1"></li>
+        <li style="color:black;" data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <div class="clap">
+            <img src="/staticfunny.png" alt="Image">
+          </div>
+          <div class="carousel-caption">
+            <h1 style="color:gray;">Nik-Chat is a website which allows people to chat with others</h1>
+            <h2 style="color:gray;">It is free and you can create your own groups too !</h2>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="dap">
+            <img src="/staticfunny.png" alt="Image">
+          </div>
+          <div class="carousel-caption">
+            <h1 style="color:gray;">On Nik-Chat you can even create groups !</h1>
+            <h2 style="color:gray;">You can create groups with 2 people or you could create a group with up to 50 people</h2>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="tood">
+            <img src="/static/chat/pic3.png " alt="Image">
+          </div>
+          <div class="carousel-caption">
+            <h1 style="color:gray;">In Nik-Chat you can join groups created by other people</h2>
+            <h2 style="color:gray;">..But only if you get an invite. </h2>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+
+
+<footer>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>General Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>© 2021 Nikhil</p>
+        <p>No Copying !!</p>
+        <p>pay $2 if you are copying code</p>
+        <p>besides I blocked all the posible ways of looked at the pages source code</p></td>
+      </tr>
+    </tbody>
+  </table>
+</footer>
+  <script>
+window.onload = function() {
+  document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+  }, false);
+  document.addEventListener("keydown", function(e) {
+  //document.onkeydown = function(e) {
+    // "I" key
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+      disabledEvent(e);
+    }
+    // "J" key
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+      disabledEvent(e);
+    }
+    // "S" key + macOS
+    if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+      disabledEvent(e);
+    }
+    // "U" key
+    if (e.ctrlKey && e.keyCode == 85) {
+      disabledEvent(e);
+    }
+    // "F12" key
+    if (event.keyCode == 123) {
+      disabledEvent(e);
+    }
+  }, false);
+  function disabledEvent(e){
+    if (e.stopPropagation){
+      e.stopPropagation();
+    } else if (window.event){
+      window.event.cancelBubble = true;
+    }
+    e.preventDefault();
+    return false;
+  }
+
+  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('body').hide()
+  $('body').fadeIn(5000)
+  $('.clapclap').hide()
+
+    $('.c').hide()
+
+  $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  )
+$('#toad').on('click', function() {
+  $('.c').slideDown()
+  $('#hello2').on('click', function() {
+    $('.c').slideUp()
+  })
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Test Results | Nikhilodeon/Nik-Spell</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style>
+
+    footer {
+      background: #ebf7a8;
+      color: black;
+    }
+    button {
+      padding:10px;
+			background-color:#6a67ce;
+	    color: #FFFFFF;
+			border: 0px;
+      cursor:pointer;
+			border-radius: 5px;
+    }
+body {
+  background: #ebf7a8;
+  padding:3%;
+}
+hr {
+  color:black;
+  background:black;
+  border-top: 2px solid black;
+}
+.a {
+  background:white;
+  color:black;
+  width:80%;
+  padding:30px;
+  border-radius:20px;
+  margin-left:10%;
+}
+.yay {
+  border-radius:20px;
+  border: 2px solid black;
+  position: absolute;
+  padding:20px;
+  background: #ebf7a8;
+  margin-left:25%;
+  margin-right: 50%;
+  width:50%;
+}
+    </style>
+  </head>
+  <body>
+<h1><img src="/static/chat/user_files/{{ img }}" width="60" style="border-radius:50px;border:2px solid black"> {{ name }}</h1><h1 style="float:right;"><span style="padding-left:10px;padding-right:10px;color:black;border:13px solid black;border-radius:50px">{{ level }}</span><br>Level</h1>
+<br><hr><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4" style="margin-left:33%">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Score</div>
+        <div class="panel-body"><h1>{{ correct - 1 }} / {{ q_num - 1 }}</h1></div>
+        <div style="color:gray" class="panel-footer">From {{ old_streak }}</div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="margin-left:17%">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Average Acuracy</div>
+        <div class="panel-body"><h1>{{ new_percent }}%</h1></div>
+        <div style="color:gray" class="panel-footer">From {{ old_percent }}%</div>
+      </div>
+    </div>
+    <div class="col-sm-4" >
+      <div class="panel panel-primary">
+        <div class="panel-heading">Test's acuracy</div>
+        <div class="panel-body"><h1>{{ currant_percent }}%</h1></div>
+        <div style="color:gray" class="panel-footer">Level {{ level }}</div>
+      </div>
+    </div><br>
+
+    </div>
+  </div>
+  {% if passs == 'yay' %}
+  <div id="good" class="yay">
+    <img src="/static/spell/trophy.jfif" width="100"><br><hr><br>
+    <h2>Good Job</h2><br><h3>You are now in level {{ level }}</h3>
+    <button id="good2" name="button">close</button>
+  </div>
+  {% endif %}
+  {% if passs == 'fail' %}
+  <div id="bad" class="yay">
+    <img src="/static/spell/bad.jfif" width="100"><br><hr><br>
+    <h2>oops!</h2><br><h3>You are now in level {{ level }}</h3>
+    <button id="bad2" name="button">close</button>
+  </div>
+  {% endif %}
+  <br><br><br>
+  {% if jk == 'no' %}
+<div class="a">
+  <h1>Words to improve on</h1>
+  <h4>NOTE : all the incorrect words will be asked in the improvement test</h4>
+  <ul>
+  {% for elm in wrong %}
+  <li><h3>{{ elm }}</h3></li>
+  {% endfor %}
+</ul>
+</div>
+{% endif %}
+  <br><br><a href="/spell"><button name="button" style="color:white;background:blue;padding:3px;border:none">Go to your dashboard</button></a>
+<hr>
+<footer>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>General Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>© 2021 Nikhil</p>
+        <p>No Copying !!</p>
+        <p>pay $2 if you are copying code</p>
+        <p>besides I blocked all the posible ways of looked at the pages source code</p></td>
+      </tr>
+    </tbody>
+  </table>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('body').hide()
+  $('body').fadeIn(5000)
+$('#bad2').on('click', function() {
+  $('#bad').hide()
+})
+$('#good2').on('click', function() {
+  $('#good2').hide()
+})
+
+</script>
+</body>
+</html>

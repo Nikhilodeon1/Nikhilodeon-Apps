@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{{ error_type }} | Nikhilodeon</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      body {
+        background: {{ color }};
+        font-family: sans-serif;
+        color: black;
+      }
+      h1{
+        font-size: 60px;
+      }
+      h2 {
+        font-size: 50px;
+      }
+      h3 {
+        font-size: 30px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      .section {
+        margin-left: 15%;
+        margin-right: 15%;
+        border-radius: 15px;
+        border: 2px solid black;
+        padding: 20px;
+      }
+      #home {
+        background: {{ color }};
+        padding: 10px;
+        padding-top: 35px;
+        border-radius: 20px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+    <div class="section">
+      <br>
+      <h1>{{ error_type }}</h1>
+      <h2>{{ error }}</h2>
+      <h3>Sorry {{ name }},</h3>
+      <h3>{{ issue }}</h3>
+      <br>
+      <h3>What to do:</h3>
+      <h4>{{ ttd }}</h4>
+      <br>
+      <br>
+      <br>
+      <h4>Go to the Home Page:</h4>
+      <a style="background:{{ color2 }};" id="home" href="{{ url_for('chat_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+    </div>
+  </body>
+</html>

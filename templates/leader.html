@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>Point Leaderboard | Nikhilodeon</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='funny.png')}}">
+
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(odd) {
+background-color: lightgray;
+  color:black;
+}
+tr:nth-child(even) {
+  background-color: purple;
+  color:white;
+}
+</style>
+</head>
+<body style="background:#201f1f">
+
+<h1 style="font-size:75px;color:white">Leader Board</h1>
+
+<table style="border:5px solid black">
+  <tr>
+    <th style="border-bottom:5px solid black;border-right:5px solid black"><h1>Place</h1></th>
+    <th style="border-bottom:5px solid black;border-right:5px solid black"><h1>Person</h1></th>
+    <th style="border-bottom:5px solid black"><h1>Money</h1></th>
+  </tr>
+  <tr>
+    {% set hi = namespace(value = 0) %}
+    {% for elm in top %}
+    <td style="border-right:5px solid black"><h3>{{ hi.value + 1 }}). </h3></td>
+    <td style="border-right:5px solid black"><h3>{{ elm }}</h3></td>
+    <td><h3>{{ numbers[hi.value] }}</h3></td>
+    {% set hi.value = hi.value + 1 %}
+    {% endfor %}
+  </tr>
+</table>
+<br><br><a href='/'><button type="button" name="button" style="background:purple;border: 3px solid black;border-radius:10px;padding:8px;font-size:25px">Nikhilodeon Home Page</button></a>
+</body>
+</html>

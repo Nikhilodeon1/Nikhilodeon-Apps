@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Feedback | Nikhilodeon</title>
+<link rel="shortcut icon" href="{{url_for('static', filename='funny.png')}}">
+
+    <style media="screen">
+      .a {
+        border:5px solid black;
+        border-radius: 15px;
+        background: white;
+        padding:15px;
+margin:15%
+      }
+    </style>
+  </head>
+  <body style="background:purple;font-family:sans-serif"><br><br>
+<a href="/"><button style="background:hotpink;padding:5px;font-size:35px;border-radius:10px;borser:2px solid black;color:white"> Go Home</button></a>
+<br><br>
+    <div class="a">
+      <form action="/feedback" method="post">
+      <h1 style="margin-left:40%">Feedback</h1>
+      <br><br>
+      <textarea style="font-size:50px;margin" name="fb" rows="5" cols="35" style="resize:none">Your feedback has been submitted</textarea>
+      <br>
+</form>
+    </div>
+  </body>
+</html>

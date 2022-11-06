@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Homepage | Nikhildeon/Nik-Spell</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style>
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      /* Add a gray background color and some padding to the footer */
+    .clap img {
+        width: 52%; /* Set width to 100% */
+        margin: auto;
+        min-height:200px;
+    }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+      }
+    }
+    .clap {
+      overflow-y: hidden;
+      color: black;
+    }
+    img {
+      height: 20%;
+    }
+    .active li {
+      color: black;
+    }
+    .dap img {
+      width: 102.8%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+    }
+    .clap img {
+        width:40%;
+        margin: auto;
+      min-height:100px;
+    }
+    .tood img {
+      width: 74%;
+margin: auto;
+      min-height:100px;
+    }
+    footer {
+      background: #ebf7a8;
+      color: black;
+    }
+    .cod {
+    }
+    #spit {
+      text-decoration: none;
+      color: white;
+      font-size: 45px;
+      font-family: fantasy;
+      margin-left: 2%;
+    }
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+figure.snip1206 {
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #ebf7a8;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 220px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+}
+figure.snip1206 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+figure.snip1206 img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+figure.snip1206:after {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  opacity: 0.75;
+  -webkit-transform: skew(-45deg) scaleX(0);
+  transform: skew(-45deg) scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+figure.snip1206 figcaption {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+figure.snip1206 h2,
+figure.snip1206 p {
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+}
+figure.snip1206 h2 {
+  padding: 0 30px;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+figure.snip1206 p {
+  padding: 0 50px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+figure.snip1206 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+figure.snip1206:hover:after,
+figure.snip1206.hover:after {
+  -webkit-transform: skew(-45deg) scaleX(1);
+  transform: skew(-45deg) scaleX(1);
+  transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+figure.snip1206:hover figcaption h2,
+figure.snip1206.hover figcaption h2,
+figure.snip1206:hover figcaption p,
+figure.snip1206.hover figcaption p {
+  -webkit-transform: translate3d(0%, 0%, 0);
+  transform: translate3d(0%, 0%, 0);
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+figure.snip1206:hover figcaption h2,
+figure.snip1206.hover figcaption h2 {
+  opacity: 1;
+}
+figure.snip1206:hover figcaption p,
+figure.snip1206.hover figcaption p {
+  opacity: 1;
+}
+.sing {
+  font-size:35px;
+  color: ebf7a8;
+}
+figure.snip1206:hover {
+  .sing.display: none;
+}
+.td img {
+  width: 116%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+figure.snip1206:hover {
+  cursor: pointer;
+}
+input {
+  width: 60%;
+  height: 3%;
+}
+.blog {
+  float:right;
+}
+#tapdance {
+  background: #24242405;
+  border: none;
+}
+.tapdance {
+  background: {{ color }};
+  border: none;
+}
+#myCarousel {
+  height: 30%;
+}
+body {
+  background: #ebf7a8;
+}
+    </style>
+  </head>
+  <body>
+<div id="navbar">
+  <nav  style="background: #ebf7a8;border:none" class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div style="width: 25%;" class="navbar-header">
+      <img width="45" style="border-left:3px solid white" src="/static/spell/pic1.PNG"><span id="spit" style="color:black"><br>Nik-Spell </span>
+      </div>
+        <ul class="nav navbar-nav">
+          <br><br><br>
+          <li><figure id="toad" class="snip1206"><span class="sing"><span class="glyphicon glyphicon-log-in" style="color:black;font-size:50px"></span> Login<br><br></span><figcaption><h2>Login</h2><p>Lets you log in to the Nik-Poll</p></figcaption></figure></li>
+          <li><figure id="load" class="snip1206"><span class="sing"><span class="fa fa-user-plus" style="color:black;font-size:50px"></span> Create Account<br><br></span><figcaption><h2>Create Account</h2><p>Lets you create A Nik-Poll account</p></figcaption></figure></li>
+        </ul>
+    </div>
+    <div class="c" style="border-top:3px solid black">
+    <form id="a" style="margin-left:2.5%" action="/spell/log_in" method="post">
+      <br>
+      <h3><label for="uname">Username:</label></h3>
+      <h3><input type="text" name="uname" placeholder="Your Username" value="{{ uname }}" required></h3>
+      <hr>
+      <h3><label for="psw">Password:</label></h3>
+      <h3><input type="password" name="psw" placeholder="Your Password" required></h3>
+      <hr>
+      <button style="color:white;background: #289405;border:2px solid black;margin-bottom: 1.5%;margin-right:10%;" type="submit">GO</button><button id="hello2" style="color:white;background:red;border:2px solid black" type="button">Close</button>
+    </form><br>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+     {% for message in messages %}
+        {{ message }}
+     {% endfor %}
+  {% endif %}
+{% endwith %}
+  </div>
+
+  <div class="d" style="border-top:3px solid black">
+  <form id="b" style="margin-left:2.5%" action="/spell/sign_in" method="post">
+    <br>
+    <h3><label for="uname">Username:</label></h3>
+    <h3><input type="text" name="create_uname" placeholder="Your Username" required></h3>
+    <hr>
+    <h3><label for="psw">Password:</label></h3>
+    <h3><input type="password" name="create_psw" placeholder="Your Password" required></h3>
+    <hr>
+    <h3><label for="level">Grade Level:</label></h3>
+    <select name="level">
+      <option value="1">1 or below</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12 or above</option>
+    </select>
+    <hr>
+  <button style="color:white;background: #289405;border:2px solid black;margin-bottom: 1.5%;margin-right:10%;" type="submit">GO</button><button id="hello3" style="color:white;background:red;border:2px solid black" type="button">Close</button>
+  </form><br>
+</div>
+  </nav>
+</div>
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="color:black;">
+      <!-- Indicators -->
+      <ol class="carousel-indicators" style="color:black;">
+        <li style="color:black;" style="color:black;"data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li style="color:black;" data-target="#myCarousel" data-slide-to="1"></li>
+        <li style="color:black;" data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="/static/spell/blank.PNG" style="margin-right:25%">
+          <div class="carousel-caption">
+            <h1 style="color:gray;">Nik-Spell is a online platform on which you can do spelling</h1>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="/static/spell/blank.PNG" style="margin-right:25%">
+          <div class="carousel-caption">
+            <h1 style="color:gray;">There are many levels</h1>
+          </div>
+        </div>
+
+        <div class="item">
+<img src="/static/spell/blank.PNG" style="margin-right:25%">
+          <div class="carousel-caption">
+            <h1 style="color:gray;">Nik-Spell uses AI. You will start from level 8.</h1>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+
+
+<footer>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>General Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>© 2021 Nikhil</p>
+        <p>No Copying !!</p>
+        <p>pay $2 if you are copying code</p>
+        <p>besides I blocked all the posible ways of looked at the pages source code</p></td>
+      </tr>
+    </tbody>
+  </table>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('body').hide()
+  $('body').fadeIn(5000)
+  $('.clapclap').hide()
+
+    $('.c').hide()
+    $('.d').hide()
+
+  $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  )
+$('#toad').on('click', function() {
+  $('.c').slideDown()
+  $('#hello2').on('click', function() {
+    $('.c').slideUp()
+  })
+})
+
+$('#load').on('click', function() {
+  $('.d').slideDown()
+  $('#hello3').on('click', function() {
+    $('.d').slideUp()
+  })
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <title>Log In | Nikhilodeon</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      .formA {
+        background: white;
+        border-radius: 25px;
+        border: 2px solid black;
+        padding:50px;
+      }
+      hr{
+        border-bottom: 2px solid black;
+      }
+button:hover {
+  cursor:help;
+}
+    </style>
+  </head>
+  <body style="background:purple;padding:13.33%;font-family:sans-serif;">
+    <div class="formA">
+      <form class="forkmA" action="/login" method="post" enctype="multipart/form-data">
+        <h1 style="margin-left:34%;font-size:75px">LOG IN</h1><br><br>
+        <label for="uname"><h3>Username:</h3></label><br>
+<!-----------><input id="uname" style="width:98.5%;font-size:25px;border:2px solid black;border-radius:10px;padding:5px;" type="text" name="uname" placeholder="Username" value="" required>
+              <h2 style="color:red">{{ msg }}</h2>
+        <br><hr>
+        <label for="psw"><h3>Password:</h3></label><br>
+<!-----------><input id="psw" style="width:98.5%;font-size:25px;border:2px solid black;border-radius:10px;padding:5px;" type="password" name="psw" placeholder="Password" required>
+
+        <br><br><button id="click1" style="background:hotpink;color:white;border:2px solid black;border-radius:7px;padding:4px;font-size:13px;" type="submit">Submit</button>
+      </form>
+    </div>
+
+  </body>
+</html>

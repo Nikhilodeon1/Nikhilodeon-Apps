@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Post-Poll | Nikhilodeon/Nik-Poll</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      body {
+        background: {{ color }};
+        font-family: sans-serif;
+      }
+      #home {
+
+        background: {{ color }};
+        padding: 10px;
+        padding-top: 35px;
+        border-radius: 20px;
+        border: 2px solid black;
+      }
+      .a {
+        text-align: center;
+      }
+      .b {
+        background: white;
+        position: absolute;
+        margin-left: 35%;
+        padding: 2%;
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+<div class="topnav">
+  <a style="background:{{ color2 }};" id="home" href="{{ url_for('poll__home_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+</div>
+<br><br><br>
+<div class="a">
+  <div class="b">
+    <form action="{{ url_for('poll__stats_from_poll') }}" method="post">
+      <h3>Thank You {{ uname }} for finishing<br>{{ poll }}</h3>
+       <h3>You can now:</h3>
+         <h3><button type="button" name="button2">See The Poll Statistics</button></h3>
+         <div class="hidden">
+             <label for="stat_type">What type of Chart would you like to see the poll data in?</label><br>
+             <select name="stat_type">
+               <option value="column">Column Chart</option>
+               <option value="pie">Pie Chart</option>
+             </select><br>
+             <input type="text" style="display:none" name="psw" value="{{ psw }}">
+             <button type="submit">Go</button>
+         </div>
+         <br>or<br>
+         Do Something Else
+       </h3>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <h4>{{ message }}</h4>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </form>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('.hidden').hide()
+  $("button[name='button2']").on('click', function() {
+    $('.hidden').show(1500)
+  })
+</script>
+  </body>
+</html>

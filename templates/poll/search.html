@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <title>Search Polls | Nikhildeon/Nik-Poll</title>
+      <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+      <style media="screen">
+        body {
+          font-family: sans-serif;
+          background-color: {{ color }};
+        }
+        .section {
+          border-radius: 10px;
+          background: white;
+          padding: 15px;
+          width: 70%;
+          margin-left: 15%;
+        }
+      </style>
+  </head>
+  <body>
+    <br><div class="topnav">
+  	<a style="background:{{ color2 }};padding-top:35px;padding-left: 7px;padding-right: 7px;padding-bottom:7px;border-radius:20px;border: 2px solid black" id="home" href="{{ url_for('home_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+  	</div><br>
+    <div class="section">
+    <h1 style="text-align:center">Public Polls</h1><br>
+    <form action="/poll{{ url_for('search') }}" method="post">
+      <label for="search"><h2>Search</h2></label>
+      <input type="text" style="font-size:25px;width:90%;" name="search" value="{{ search }}"><button style="background:{{ color2 }}" type="submit"><i class="fa fa-search" style="color:white;font-size:28px;border:none;padding-left:15px;padding-right:15px" style="color:black;font-size:30px"></i></button>
+    </form>
+    <br><br>
+    <hr><br>
+    <h2>Results:</h2><br>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <h4>{{ message }}</h4>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}<br>
+    <div class="row">
+    {% set psw = namespace(value = 0) %}
+    {% for name in names %}
+    <div class="col-sm-3">
+      <form action="/poll{{ url_for('public_poll') }}" method="post"><input style="display:none" name="abc" value='{{ pws[psw.value] }}'><button type="submit" style="width:150px;padding:5px;background:white;cursor:pointer;border-radius:6px;border:2px solid black"><img src="/static/poll/pike.jpg" style="width:140px;"><br><h3>{{ name }}</h3></button></a></form>
+    </div>
+    {% set psw.value = psw.value + 1 %}
+    {% endfor %}
+</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <title>Poll Results (Column  Chart) | Nikhilodeon/Nik-Poll</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+<script>
+window.onload = function () {
+  {% set quest = namespace(value = 0) %}
+  {% for key in result_dict.keys() %}
+var chart{{ quest.value }} = new CanvasJS.Chart("chartContainer{{ quest.value }}", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "{{ q_list[quest.value] }}"
+	},
+	axisY: {
+		title: "No. of Votes"
+	},
+	data: [{
+		type: "column",
+		showInLegend: true,
+		legendMarkerColor: "grey",
+		legendText: "Number of Answers",
+		dataPoints: [
+			{% set counter = namespace(value = 0) %}
+			{% for choice in result_dict[key].keys() %}
+			{% if counter.value == 3 %}
+			{y: {{ result_dict[key][choice] }}, label: "{{ choice }}"}
+			{% else %}
+			{y: {{ result_dict[key][choice] }}, label: "{{ choice }}"},
+			{% endif %}
+			{% set counter.value = counter.value + 1 %}
+			{% endfor %}
+		]
+	}]
+});
+{% set quest.value = quest.value + 1 %}
+{% endfor %}
+
+{% for elm in num_list %}
+chart{{ elm }}.render();
+{% endfor %}
+
+}
+</script>
+      <style media="screen">
+      body {
+        background: {{ color }};
+        font-family: sans-serif;
+      }
+      .a {
+        text-align: center;
+      }
+      .b {
+        width: 70%;
+        text-align: left;
+        background: white;
+        position: absolute;
+        padding: 2%;
+        margin-left: 10%;
+      }
+      input {
+        width: 90%;
+      }
+a.canvasjs-chart-credit {
+	display:none;
+}
+    </style>
+</head>
+<body>
+  <br>
+<div class="topnav">
+<a style="background:{{ color2 }};padding-top:35px;padding-left: 7px;padding-right: 7px;padding-bottom:7px;border-radius:20px;border: 2px solid black" id="home" href="{{ url_for('home_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+</div>
+ <div class='a'>
+   <div class='b'>
+     <br><form action="/poll{{ url_for('stats_from_poll') }}" method='post'><input style='display:none;' name='stat_type' value='pie'><input style='display:none;' name='psw' value='{{ clap }}'><button type="submit">See Data in a Pie Chart</button></form>
+     <br><br>Link: <a href='http://nikhilodeon.live/poll/poll/{{ psw }}'>http://nikhilodeon.live/poll/poll/{{ psw }}</a><br><br>
+     {% set num = namespace(value = 0) %}
+     {% for key in result_dict.keys() %}
+     <div id="chartContainer{{ num.value }}" style="height: 300px; width: 100%;"></div>
+     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+     <br><hr><br>
+     {% set num.value = num.value + 1 %}
+     {% endfor %}
+     <br><br><br><form action="/poll/active" method='post'> <input style="display:none" type="text" name="ekam" value="{{ q_list[quest.value] }}"> <button type="submit"><h3>End Voting for this poll</h3></button></form>
+   </div>
+  </div>
+</body>
+</html>

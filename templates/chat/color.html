@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Create Group | Nikhilodeon/Nik-Chat</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+<style media="screen">
+body {
+	background: #289405;
+	font-family: sans-serif;
+}
+.b {
+	text-align: center;
+}
+.b {
+	width: 70%;
+	text-align: left;
+	background: white;
+	position: absolute;
+	padding: 2%;
+	margin-left: 10%;
+	border-radius: 7px;
+}
+hr {
+	border-top: 5px solid black;
+}
+div {
+	display:block;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var $people = '{{ name }}, '
+var $list = []
+{% set num2 = namespace(value = 0) %}
+{% for elm in users %}
+{% if elm != name %}
+$list.push('{{ elm }}')
+{% endif %}
+{% set num2.value = num2.value + 1 %}
+{% endfor %}
+
+console.log($list)
+
+console.log($people)
+</script>
+</head>
+<body>
+	<br>
+	<div class="topnav">
+	<a style="background:{{ color2 }};padding-top:35px;padding-left: 7px;padding-right: 7px;padding-bottom:7px;border-radius:20px;border: 2px solid black" id="home" href="{{ url_for('chat__chat_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+	</div>
+
+		<div class="b">
+			<br>
+			<form id="jijiji" method="post" action="/chat/create_chat">
+			<h1>Create a Group</h1>
+			<br><hr><br>
+			<label for='group'><h2>Please type the name of the group</h2></label><br>
+			<input type="text" name="group" style="font-size:40px" placeholder="Group Name"><br><hr><br>
+			<h2>Who do you want in your group ?</h2><br>
+			<input type="text" id="search" style="font-size:40px" placeholder="Search for people"><button style="color:white;border:2px solid black;padding:10px;background:green;border-radius:10px;" type="button" name="button" id="submit">Search</button><br><br>
+			<p>NOTE: you have to type the name of the user you would like to add to your group (case doesn't matter)</p>
+			<div class="results" style="border:2px solid black">
+			<h4>Results :</h4><br>
+			{% set num = namespace(value = 0) %}
+			{% for elm in users %}
+			{% if elm != name %}
+			<button class="{{ elm }}" type="button" id="button{{ num.value + 1 }}" style="cursor:pointer;border-radius:50px;padding:15px;border:2px solid black">{{ elm }}</button><span style="display:none" id="span{{ num.value + 1 }}">no clicks</span><br>
+			{% endif %}
+			{% set num.value = num.value + 1 %}
+			{% endfor %}
+		</div><br><br><br>
+			<label for="people"> The People In Your Group</label><br>
+			<input id="people" style="width: 80%;font-size:30px" name="people" value=""><br><hr><br>
+			<button type="submit" id="submit" style="color:white;border:2px solid black;padding:10px;background:green;border-radius:10px;">Submit</button>
+			</form>
+			<br>
+		</div>
+	<script>
+	{% for elm in users %}
+	$('.{{ elm }}').hide()
+	{% endfor %}
+	$('#submit').on('click', function() {
+		var $val = $('#search').val()
+		{% for elm in users %}
+				if ($val.toLowerCase() === '{{ elm }}'.toLowerCase()) {
+				$('.{{ elm }}').show(1500)
+		}
+		{% endfor %}
+	})
+	var $num = 0
+	 {% set num3 = namespace(value = 0) %}
+	 {% for elm in users %}
+	 {% if elm != name %}
+	 $('#button{{ num3.value + 1 }}').on('click', function() {
+		 if ($('#span{{ num3.value + 1 }}').html() === 'no clicks') {
+			 $('#button{{ num3.value + 1 }}').css('background', 'green')
+			 setTimeout(() => { $('.{{ elm }}').hide(1500); }, 5000);
+			 var $strs = 'clicked'
+			 $('#span{{ num3.value + 1 }}').html($strs)
+			 if ($people.includes('{{ elm }}') === false) {
+				 $people += '{{ elm }}, '
+			 }
+			 $('#people').val($people)
+			 $num += 1
+			 $('#num').val($num)
+			 console.log($people)
+			 console.log($num)
+		 } else {
+			 for( var i = 0; i < $people.length; i++){
+					 if ( $people[i] === '{{ elm }}') {
+							 $people.splice(i, 1);
+					 }
+			 }
+			 $('#button{ num3.value + 1 }}').css('background', '#efefef')
+			 var $str = 'no clicks'
+			 $('#span{{ num3.value + 1 }}').html($str)
+		 }
+	 })
+	 {% endif %}
+	 {% set num3.value = num3.value + 1 %}
+	 {% endfor %}
+
+$('form input:not([type="submit"])').keydown(function(e) {
+		    if (e.keyCode == 13) {
+	        var inputs = $(this).parents("form").eq(0).find(":input");
+	        if (inputs[inputs.index(this) + 1] != null) {
+	            inputs[inputs.index(this) + 1].focus();
+	        }
+	        e.preventDefault();
+	        return false;
+	    }
+	});
+	</script>
+	<style media="screen">
+		.b {
+			display:block;
+		}
+	</style>
+</body>
+</html>

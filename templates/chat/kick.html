@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Kick Participant | Nikhilodeon/Nik-Chat</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      body {
+        background: #289405;
+        font-family: sans-serif;
+      }
+      .a {
+        text-align: center;
+      }
+      .b {
+        width: 70%;
+        text-align: left;
+        position: absolute;
+        padding: 2%;
+        margin-left: 10%;
+        background: white;
+        border-radius: 15px;
+        border: 2px solid black
+      }
+      input {
+        font-size: 25px;
+        width: 90%;
+      }
+      .style {
+        border-radius: 50px;
+        padding:5px;
+        border:2px solid black;
+        background:grey;
+        color:black;
+      }
+    </style>
+  </head>
+  <body>
+<div class="a">
+  <div class="b">
+    <h1>Remove People</h1><br><hr><br>
+    <h3>Who would you like to kick out of '{{ chat }}' ?</h3><br><br>
+    {% set num = namespace(value = 0) %}
+    {% for elm in people %}
+    <button type="button" class="style" name="button" id="button{{ num.value + 1 }}"><input id="input{{ num.value + 1 }}" style="display:none" value="{{ elm }}">{{ elm }}</button><br><br>
+    {% set num.value = num.value + 1 %}
+    {% endfor %}
+    <br><hr><br>
+    <form action="/chat/kick" method="post" id="form1">
+      <input id="num" type="text" style="display:none" name="num" value="">
+      <input type="text" style="display:none" name="from" value="kick">
+      <input id="input" style="display:none" type="text" name="words" value="">
+      <input type="text" style="display:none" name="chat" value="{{ chat }}">
+      <button id="submit2" class="style" type="button" name="button">Go</button>
+    </form>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var $people = ""
+var $a = 0
+{% set num2 = namespace(value = 0) %}
+{% for elm in people %}
+  $('#button{{ num2.value + 1 }}').on('click', function() {
+    $('#button{{ num2.value + 1 }}').css('background', 'green')
+    $('#button{{ num2.value + 1 }}').css('color', 'white')
+
+/*dasdfsadfjhdslakjfhlsdjkahflkjsdhfajldsjkfhlajsdhflakjdshflajdhf*/
+
+    var $list = $people.split(", ")
+      if ($('#input{{ num2.value + 1 }}').val() in $list) {
+        console.log('fresh green grass');
+      } else {
+      $people += $('#input{{ num2.value + 1 }}').val() + ", "
+      }
+      console.log($list + ' - before');
+      console.log($people + ' - selected');
+
+/*dasdfsadfjhdslakjfhlsdjkahflkjsdhfajldsjkfhlajsdhflakjdshflajdhf*/
+
+    var $nn = $a + 1
+    $('#input').val($people)
+    $('#num').val($nn)
+    $a = Number($nn)
+
+  })
+  {% set num2.value = num2.value + 1 %}
+  {% endfor %}
+
+  $('#submit2').on('click', function() {
+    $('#submit2').css('background', 'gray')
+    var $nn = $a + 1
+    if (Number($nn) > 1) {
+      $('#submit2').css('background', 'green')
+      console.log('here');
+      $('#form1').submit()
+    }
+  })
+
+  $('.style').mousedown(function() {
+    $('#submit2').css('background', 'green')
+  })
+</script>
+  </body>
+</html>

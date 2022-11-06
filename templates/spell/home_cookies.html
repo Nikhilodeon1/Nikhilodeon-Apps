@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Spelling | Nikhilodeon/Nik-Spell</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style>
+
+    footer {
+      background: #ebf7a8;
+      color: black;
+    }
+body {
+  background: #dee99e;
+  padding:3%;
+}
+hr {
+  color:black;
+  background:black;
+  border-top: 2px solid black;
+}
+a {
+  color: black;
+}
+a:hover {
+  color:black;
+  text-decoration: none;
+}
+    </style>
+  </head>
+  <body><br>
+<h1><img src="/static/Spell/pic1.gif" width="85"><span style="font-size:70px;font-family:fantasy;color:black"> Nik-Spell</span></h1>
+    <br>
+    <a id="df" href="/"><h3><i class="fa fa-home" style="font-size:50px"></i> Home </h3></a>
+<br><hr><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Average Acuracy</div>
+        <div class="panel-body"><h1 style="font-size:65px">{{ p }}%</h1></div>
+        <div style="color:gray" class="panel-footer">Level {{ level }}</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Spelling Test</div>
+        <div class="panel-body"><h1><form action="/spell/quiz" method="post">
+          <select style="margin-left:10px" name="title">
+          <option value="General Test">{{ level }}th Grade Test</option>
+          {% if level == 7 %}
+            {% set num = namespace(value = 0) %}
+              {% for elm in twenty %}
+                <option value="MHMS-{{ level }}: Unit {{ num.value + 1 }}"><h4>Spelling Unit {{ num.value + 1 }}</h4></option>
+              {% set num.value = num.value + 1 %}
+            {% endfor %}
+          {% endif %}
+        </select> <br>
+        <button style="margin-left:45px;color:white;background:#337ab7;padding:15px;border-radius:15px;border:2px solid black" type="submit">Take Quiz !</button></form></h1></div>
+        <div style="color:gray" class="panel-footer">Level {{ level }}</div>
+      </div>
+    </div>
+    {% if a == 'show' %}
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Improvement Test</div>
+        <div class="panel-body"><h1><form action="/spell/iquiz" method="post"><button style="margin-left:45px;color:white;background:#337ab7;padding:15px;border-radius:15px;border:2px solid black" type="submit">Take Quiz !</button></form></h1></div>
+        <div style="color:gray" class="panel-footer">Level {{ level }}</div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="col-sm-4" style="margin-left:33%">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Custom Test</div>
+        <div class="panel-body"><h1><form action="/spell/custom" method="post"><button style="margin-left:45px;color:white;background:#337ab7;padding:15px;border-radius:15px;border:2px solid black" type="submit">Take Quiz !</button></form></h1></div>
+        <div style="color:gray" class="panel-footer">Level {{ level }}</div>
+      </div>
+    </div>
+
+    </div>
+    </div>
+<hr>
+<footer>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>General Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>© 2021 Nikhil</p>
+        <p>No Copying !!</p>
+        <p>pay $2 if you are copying code</p>
+        <p>besides I blocked all the posible ways of looked at the pages source code</p></td>
+      </tr>
+    </tbody>
+  </table>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('body').hide()
+  $('body').fadeIn(5000)
+</script>
+</body>
+</html>

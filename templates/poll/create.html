@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Create Poll | Nikhilodeon/Nik-Poll</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      body {
+        background: {{ color }};
+        font-family: sans-serif;
+      }
+      #home {
+
+        background: {{ color }};
+        padding: 10px;
+        padding-top: 35px;
+        border-radius: 20px;
+        border: 2px solid black;
+      }
+      .a {
+        text-align: center;
+      }
+      .b {
+        margin:150px;
+      }
+      .question {
+        background: white;
+        border-radius: 7px;
+      }
+      textarea {
+        resize: none;
+      }
+      /* The container */
+.container {
+  margin-left: 45%;
+  width: 85px;
+  margin-right: 20%;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+input, select, option {
+  background-color: #34c5f7;
+  border: none;
+  border-bottom: 5px solid #0011FF;
+  color: white;
+}
+
+    </style>
+  </head>
+  <body>
+    <br>
+<div class="topnav">
+  <a style="background:{{ color2 }};" id="home" href="{{ url_for('poll__home_cookies') }}"><i class="fa fa-home" style="color:white;font-size:50px" style="color:black;font-size:30px"></i></a>
+</div>
+<div class="a">
+  <div class="b">
+    <div class="question">
+      <br><h1>Create a Poll</h1><br>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <h4>{{ message }}</h4>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <br>
+    </div>
+    <form action="{{ url_for('poll__done') }}" method="post"><br>
+    <div class="question"><br>
+      <label for="title">Poll Title</label><br>
+      <input style="font-size:50px" type="text" name="title" placeholder="Poll Title" required><br>
+      <h5>By: {{ creator }}</h5><br>
+      <button id="tub" type="button">Go</button>
+      <input style="display:none" type="text" name="ucreater" value="{{ creator }}"><br><br>
+    </div><br>
+    <div id="c" class="question">
+      <br>
+      <label for="please">Please type a poll Password with no spaces for your poll</label>
+      <br>
+      <input id="boing" type="text" name="please" placeholder="poll password" required>
+      <button id="tlig" type="button">Go</button><br>
+      <h4 id="error"></h4>
+      <br><br>
+    </div><br>
+    <div id="z" class="question">
+	<br>
+	  <label for="q_num">How many Questions would you like</label><br>
+	  <input id="numboor" type="number" name="q_num" placeholder="Number of Questions"><br>
+	  <p id="err"></p>
+	  <button id="ping" type="button">Ok</button>
+        <br>
+    </div>
+    <br>
+    <br>
+	<div id='parent'>
+	<div id="q1" class="question" style="color:black"><br><label for="question1">Please type Question #1</label><br><textarea id="question1" name="question1" rows="14" cols="80" placeholder="Question 1"></textarea><br><input value=""  id="o1q1" name="o1q1" placeholder="Option 1" ><br><br><input value="" id="o2q1" name="o2q1" placeholder="Option 2" ><input name="num1" id="num1"style="display:none" value="0"><div id="extra1"></div><br><button type="button" id="button1"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q2" class="question" style="color:black"><br><label for="question2">Please type Question #2</label><br><textarea id="question2" name="question2" rows="14" cols="80" placeholder="Question 2"></textarea><br><input value=""  id="o1q2" name="o1q2" placeholder="Option 1" ><br><br><input value="" id="o2q2" name="o2q2" placeholder="Option 2" ><input name="num2" id="num2"style="display:none" value="0"><div id="extra2"></div><br><button type="button" id="button2"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q3" class="question" style="color:black"><br><label for="question3">Please type Question #3</label><br><textarea id="question3" name="question3" rows="14" cols="80" placeholder="Question 3"></textarea><br><input value=""  id="o1q3" name="o1q3" placeholder="Option 1" ><br><br><input value="" id="o2q3" name="o2q3" placeholder="Option 2" ><input name="num3" id="num3"style="display:none" value="0"><div id="extra3"></div><br><button type="button" id="button3"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q4" class="question" style="color:black"><br><label for="question4">Please type Question #4</label><br><textarea id="question4" name="question4" rows="14" cols="80" placeholder="Question 4"></textarea><br><input value=""  id="o1q4" name="o1q4" placeholder="Option 1" ><br><br><input value="" id="o2q4" name="o2q4" placeholder="Option 2" ><input name="num4" id="num4"style="display:none" value="0"><div id="extra4"></div><br><button type="button" id="button4"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q5" class="question" style="color:black"><br><label for="question5">Please type Question #5</label><br><textarea id="question5" name="question5" rows="14" cols="80" placeholder="Question 5"></textarea><br><input value=""  id="o1q5" name="o1q5" placeholder="Option 1" ><br><br><input value="" id="o2q5" name="o2q5" placeholder="Option 2" ><input name="num5" id="num5"style="display:none" value="0"><div id="extra5"></div><br><button type="button" id="button5"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q6" class="question" style="color:black"><br><label for="question6">Please type Question #6</label><br><textarea id="question6" name="question6" rows="14" cols="80" placeholder="Question 6"></textarea><br><input value=""  id="o1q6" name="o1q6" placeholder="Option 1" ><br><br><input value="" id="o2q6" name="o2q6" placeholder="Option 2" ><input name="num6" id="num6"style="display:none" value="0"><div id="extra6"></div><br><button type="button" id="button6"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q7" class="question" style="color:black"><br><label for="question7">Please type Question #7</label><br><textarea id="question7" name="question7" rows="14" cols="80" placeholder="Question 7"></textarea><br><input value=""  id="o1q7" name="o1q7" placeholder="Option 1" ><br><br><input value="" id="o2q7" name="o2q7" placeholder="Option 2" ><input name="num7" id="num7"style="display:none" value="0"><div id="extra7"></div><br><button type="button" id="button7"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q8" class="question" style="color:black"><br><label for="question8">Please type Question #8</label><br><textarea id="question8" name="question8" rows="14" cols="80" placeholder="Question 8"></textarea><br><input value=""  id="o1q8" name="o1q8" placeholder="Option 1" ><br><br><input value="" id="o2q8" name="o2q8" placeholder="Option 2" ><input name="num8" id="num8"style="display:none" value="0"><div id="extra8"></div><br><button type="button" id="button8"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q9" class="question" style="color:black"><br><label for="question9">Please type Question #9</label><br><textarea id="question9" name="question9" rows="14" cols="80" placeholder="Question 9"></textarea><br><input value=""  id="o1q9" name="o1q9" placeholder="Option 1" ><br><br><input value="" id="o2q9" name="o2q9" placeholder="Option 2" ><input name="num9" id="num9"style="display:none" value="0"><div id="extra9"></div><br><button type="button" id="button9"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	<div id="q10" class="question" style="color:black"><br><label for="question10">Please type Question #10</label><br><textarea id="question10" name="question10" rows="14" cols="80" placeholder="Question 10"></textarea><br><input value="" id="o1q10" name="o1q10" placeholder="Option 1" ><br><br><input value="" id="o2q10" name="o2q10" placeholder="Option 2" ><input name="num10" id="num10"style="display:none" value="0"><div id="extra10"></div><br><button type="button" id="button10"style="border-radius:50px;width:135px;background:white;border:2px solid black;margin-left:85%;cursor:pointer;margin-bottom:15px;"><h3><i class="fa fa-plus" style="color:black;font-size:30px"></i> Add Option</h3></button><br></div><br>
+	</div>
+    <div id="x" class="question"><br>
+      <button style='background:{{ color2 }};color:white;border: 2px solid black;cursor:pointer'>Done</button>
+      <br><br>
+    </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('#x').hide()
+  $('#z').hide()
+  $('#b').hide()
+  $('#c').hide()
+$('#q1').hide()
+$('#q2').hide()
+$('#q3').hide()
+$('#q4').hide()
+$('#q5').hide()
+$('#q6').hide()
+$('#q7').hide()
+$('#q8').hide()
+$('#q9').hide()
+$('#q10').hide()
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+  $('#tub').on('click', function() {
+    $('#c').show(1500)
+  })
+  $('#tlig').on('click', function() {
+    $('#z').show(1500)
+  })
+  $('#ping').on('click', function() {
+	console.log($('#numboor').val())
+	var $a = parseInt($('#numboor').val())
+	console.log($a)
+	if ($a < 1) {
+	  $('#err').html('your number is too small')
+	} else if ($a < 2) {
+	  $('#q1').show(1000)
+	  $('#num1').val(2)
+	  $('#x').show()
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+  	  $("#question1").prop('required', true);
+	} else if ($a < 3) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+	$('#x').show()
+	} else if ($a < 4) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+$('#x').show()
+	} else if ($a < 5) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+$('#x').show()
+	} else if ($a < 6) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#q5').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+$('#x').show()
+	} else if ($a < 7) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#q5').show(1000)
+	  $('#q6').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $('#num6').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+	  $("#o1q6").prop('required', true);
+  	  $("#o2q6").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+  	  $("#question6").prop('required', true);
+$('#x').show()
+	} else if ($a < 8) {
+  	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#q5').show(1000)
+	  $('#q6').show(1000)
+	  $('#q7').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $('#num6').val(2)
+	  $('#num7').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+	  $("#o1q6").prop('required', true);
+  	  $("#o2q6").prop('required', true);
+	  $("#o1q7").prop('required', true);
+  	  $("#o2q7").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+  	  $("#question6").prop('required', true);
+  	  $("#question7").prop('required', true);
+$('#x').show()
+	} else if ($a < 9) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#q5').show(1000)
+	  $('#q6').show(1000)
+	  $('#q7').show(1000)
+	  $('#q8').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $('#num6').val(2)
+	  $('#num7').val(2)
+	  $('#num8').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+	  $("#o1q6").prop('required', true);
+  	  $("#o2q6").prop('required', true);
+	  $("#o1q7").prop('required', true);
+  	  $("#o2q7").prop('required', true);
+	  $("#o1q8").prop('required', true);
+  	  $("#o2q8").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+  	  $("#question6").prop('required', true);
+  	  $("#question7").prop('required', true);
+  	  $("#question8").prop('required', true);
+$('#x').show()
+	} else if ($a < 10) {
+	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+	  $('#q5').show(1000)
+	  $('#q6').show(1000)
+	  $('#q7').show(1000)
+	  $('#q8').show(1000)
+	  $('#q9').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $('#num6').val(2)
+	  $('#num7').val(2)
+	  $('#num8').val(2)
+	  $('#num9').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+	  $("#o1q6").prop('required', true);
+  	  $("#o2q6").prop('required', true);
+	  $("#o1q7").prop('required', true);
+  	  $("#o2q7").prop('required', true);
+	  $("#o1q8").prop('required', true);
+  	  $("#o2q8").prop('required', true);
+	  $("#o1q9").prop('required', true);
+  	  $("#o2q9").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+  	  $("#question6").prop('required', true);
+  	  $("#question7").prop('required', true);
+  	  $("#question8").prop('required', true);
+  	  $("#question9").prop('required', true);
+$('#x').show()
+	} else if ($a < 11) {
+  	  $('#q1').show(1000)
+	  $('#q2').show(1000)
+  	  $('#q3').show(1000)
+	  $('#q4').show(1000)
+  	  $('#q5').show(1000)
+	  $('#q6').show(1000)
+  	  $('#q7').show(1000)
+	  $('#q8').show(1000)
+  	  $('#q9').show(1000)
+	  $('#q10').show(1000)
+	  $('#num1').val(2)
+	  $('#num2').val(2)
+	  $('#num3').val(2)
+	  $('#num4').val(2)
+	  $('#num5').val(2)
+	  $('#num6').val(2)
+	  $('#num7').val(2)
+	  $('#num8').val(2)
+	  $('#num9').val(2)
+	  $('#num10').val(2)
+	  $("#o1q1").prop('required', true);
+  	  $("#o2q1").prop('required', true);
+	  $("#o1q2").prop('required', true);
+  	  $("#o2q2").prop('required', true);
+	  $("#o1q3").prop('required', true);
+  	  $("#o2q3").prop('required', true);
+	  $("#o1q4").prop('required', true);
+  	  $("#o2q4").prop('required', true);
+	  $("#o1q5").prop('required', true);
+  	  $("#o2q5").prop('required', true);
+	  $("#o1q6").prop('required', true);
+  	  $("#o2q6").prop('required', true);
+	  $("#o1q7").prop('required', true);
+  	  $("#o2q7").prop('required', true);
+	  $("#o1q8").prop('required', true);
+  	  $("#o2q8").prop('required', true);
+	  $("#o1q9").prop('required', true);
+  	  $("#o2q9").prop('required', true);
+	  $("#o1q10").prop('required', true);
+  	  $("#o2q10").prop('required', true);
+  	  $("#question1").prop('required', true);
+  	  $("#question2").prop('required', true);
+  	  $("#question3").prop('required', true);
+  	  $("#question4").prop('required', true);
+  	  $("#question5").prop('required', true);
+  	  $("#question6").prop('required', true);
+  	  $("#question7").prop('required', true);
+  	  $("#question8").prop('required', true);
+  	  $("#question9").prop('required', true);
+  	  $("#question10").prop('required', true);
+$('#x').show()
+	} else{
+	  $('#err').html('Your number is too big')
+	}
+$('#button1').on('click', function() {
+  var $z = parseInt($('#num1').val()) + 1
+  $('#num1').val($z)
+$('#extra1').append('<br><br><input name="o' + $z + 'q1" placeholder="Option ' + $z + '" required>')
+})
+$('#button2').on('click', function() {
+  var $b = parseInt($('#num2').val()) + 1
+  console.log($b)
+  $('#num2').val($b)
+$('#extra2').append('<br><br><input name="o' + $b + 'q2" placeholder="Option ' + $b + '" required>')
+})
+$('#button3').on('click', function() {
+  var $c = parseInt($('#num3').val()) + 1
+  console.log($c)
+  $('#num3').val($c)
+$('#extra3').append('<br><br><input name="o' + $c + 'q3" placeholder="Option ' + $c + '" required>')
+})
+$('#button4').on('click', function() {
+  var $d = parseInt($('#num4').val()) + 1
+  $('#num4').val($d)
+$('#extra4').append('<br><br><input name="o' + $d + 'q4" placeholder="Option ' + $d + '" required>')
+})
+$('#button5').on('click', function() {
+  var $e = parseInt($('#num5').val()) + 1
+  $('#num5').val($e)
+$('#extra5').append('<br><br><input name="o' + $e + 'q5" placeholder="Option ' + $e + '" required>')
+})
+$('#button6').on('click', function() {
+  var $f = parseInt($('#num6').val()) + 1
+  $('#num6').val($f)
+$('#extra6').append('<br><br><input name="o' + $f + 'q6" placeholder="Option ' + $f + '" required>')
+})
+$('#button7').on('click', function() {
+  var $g = parseInt($('#num7').val()) + 1
+  $('#num7').val($g)
+$('#extra7').append('<br><br><input name="o' + $g + 'q7" placeholder="Option ' + $g + '" required>')
+})
+$('#button8').on('click', function() {
+  var $h = parseInt($('#num8').val()) + 1
+  $('#num8').val($h)
+$('#extra8').append('<br><br><input name="o' + $h + 'q8" placeholder="Option ' + $h + '" required>')
+})
+$('#button9').on('click', function() {
+  var $i = parseInt($('#num9').val()) + 1
+  $('#num9').val($i)
+$('#extra9').append('<br><br><input name="o' + $i + 'q9" placeholder="Option ' + $i + '" required>')
+})
+$('#button10').on('click', function() {
+  var $j = parseInt($('#num10').val()) + 1
+  $('#num10').val($j)
+$('#extra10').append('<br><br><input name="o' + $j + 'q10" placeholder="Option ' + $j + '" required>')
+})
+
+    })
+</script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Custom Words | Nikhildeon/Nik-Spell</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='funny.png')}}">
+  </head>
+  <style media="screen">
+    body {
+      background:#ebf7a8;
+      color:black;
+      font-family: sans-serif;
+    }
+    .a {
+      background:white;
+      border-radius:20px;
+      border:2px solid black;
+      margin-left:15%;
+      margin-right:15%;
+      padding:10px;
+      margin-top:6%;
+      padding-left: 75px;
+    }
+    button {
+      padding:10px;
+			background-color:#6a67ce;
+	    color: #FFFFFF;
+			border: 0px;
+      cursor:pointer;
+			border-radius: 5px;
+    }
+    input {
+			    padding: 10px;
+			    width: 300px;
+			    border-radius: 5px;
+			    border: solid 2px #BBB;
+
+			}
+      hr {
+        border-top: 5px solid black;
+      }
+      .pig {
+        width:40px;
+      }
+  </style>
+  <body>
+    <div class="a">
+      <a href="/"><h1>Homepage</h1></a>
+      <h1>Your custom words:</h1><br><hr><br>
+      <form action="/spell/add_custom" method="post">
+        <label for="word"><h3>Add: a word</h3></label><br><p>click enter to submit</p><br>
+        <input type="text" style="font-size:30px" name="word" placeholder="your new word">
+      </form><br><hr><br>
+      {% for word in words %}
+      <h3><input class="pig" id="{{ word }}" type="checkbox">{{ word }}</h3><br>
+      {% endfor %}
+    </div>
+    <div class="a" id="done">
+      <h3>Are you sure you want to delete the selected words?</h3><br>
+      <form action="/spell/delete" method="post">
+        <input style="display:none" id="input" type="text" name="input" value="">
+        <button type="submit">Yes</button>
+      </form>
+    </div>
+    <br><br>
+    {% if len != 0 %}
+    <div class="a">
+      <form action="/spell/cquiz" method="post"><button style="margin-left:45px;color:white;background:#337ab7;padding:15px;border-radius:15px;border:2px solid black" type="submit">Take Quiz !</button></form>
+    </div>
+    {% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('#done').hide()
+  var $str = ""
+  {% for word2 in words %}
+  $("#{{ word2 }}").on('click', function() {
+    if ($("#{{ word2 }}").prop("checked") === false) {
+      location.reload(true);
+    }
+    $str += "{{ word2 }}, "
+    $('#input').val($str)
+    $('#done').show()
+  })
+  {% endfor %}
+</script>
+  </body>
+</html>

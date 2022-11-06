@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <title>Sign In | Nikhilodeon</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='funny.png')}}">
+    <style media="screen">
+      .formA {
+        background: white;
+        border-radius: 25px;
+        border: 2px solid black;
+        padding-bottom:50px;
+        padding-top:50px;
+
+      }
+      hr{
+        border-bottom: 2px solid black;
+      }
+      .hilo {
+        background: purple;
+        border-radius: 7px;
+        border: 2px solid black;
+      }
+#selma {
+    margin:10px
+}
+    </style>
+  </head>
+  <body style="background:purple;padding:5%;font-family:sans-serif;padding-top:10px;"><br>
+    <h1 id="selma"style="font-size:70px"><img src="{{url_for('static', filename='PurpleN.gif')}}" alt="j" width='70'><img src="{{url_for('static', filename='PurpleNikhilodeon.png')}}" alt="j" width='350'></h1>
+<a href="/log_page"><button style="background:hotpink;font-size:25px;color:white;padding:10px;margin-left: 89%;border-radius: 10px;border: 2px solid black"> LOG IN </button></a>
+    <br>
+<div class="formA">
+      <form class="forkmA" action="/sign" method="post" enctype="multipart/form-data">
+        <h1 style="margin-left:35%;">Create an Account</h1>
+
+
+
+
+<table>
+  <tr>
+    <th style="border-right:5px solid black;width:50%">
+        <div class="hilo">
+          <label for="file">Choose which file you would like to set as your profile picture</label><br>
+<!-----------><input id="dingus0" type="file" name="file" value="default" required><br>
+<!-----------><input id="dingus1" style="display:none" type="text" value="default" required>
+<!-----------><input id="dingus2" type="text" style="display:none" name="full_name" value="default" required>
+          <br>
+          <button id="dingus" type="button" style="background:{{ color }};color:black;border: 2px solid black;padding:3px;margin-right:3px;background:green">Go</button><button type="button" id="close" style="margin-left:3px;background:red;color:white;padding:3px;border:2px solid black">Close</button>
+        </div>
+        <img id="despacito" src="{{url_for('static', filename='pic.png')}}" alt="nope" width="70%" style="border-radius:50px;">
+        <h3>Click image above to edit it!</h3>
+    </th>
+    <th>
+        <br><br><h1 style="color:red">{{msg}}</h1>
+        <label for="uname"><h2>Username:</h2></label><br>
+<!-----------><input id="uname" style="width:90%;font-size:25px;border:2px solid black;border-radius:10px;padding:5px;" type="text" name="uname" placeholder="Username" required>
+        <br><hr>
+        <label for="psw"><h2>Password:</h2></label><br>
+<!-----------><input id="psw" style="width:90%;font-size:25px;border:2px solid black;border-radius:10px;padding:5px;" type="password" name="psw" placeholder="Password" required>
+<!-----------><input style="display:none" type="text" name="gender" value="default">
+        <br><hr>
+        <label for="level"><h2>Grade:</h2></label><br>
+<!-----------><select name="level" style="width:120px;font-size:20px;" required>
+          <h3><option value="1">1 or below</option></h3>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12+</option>
+        </select>
+        <br>
+    </th>
+  </tr>
+</table>
+
+
+
+<hr>
+        <button id="click1" style="background:hotpink;color:white;border:2px solid black;border-radius:7px;padding:7px;font-size:23px;margin-left:47%" type="button">Submit</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+    var $pizza = 0
+    $('#dingus1').hide()
+      $('.hilo').hide()
+      $('#despacito').on('click', function(){
+        $('.hilo').show(1500)
+      })
+      $('#close').on('click', function(){
+        $('.hilo').hide(1500)
+      })
+      $('#click1').on('click', function(){
+        /*console.log($('#uname').val());
+        console.log($('#psw').val());*/
+        if ($('#uname').val().length > 3 ) {
+          if ($('#psw').val().length > 7 ) {
+            var $hello = $('#uname').val().split(' ')
+            if ($hello.length > 1) {
+              $('#uname').val('no spaces in your username')
+            } else {
+              var $bye = $('#psw').val().split(' ')
+              if ($bye.length > 1) {
+                $('#uname').val('no spaces in your password')
+                $('#psw').val('')
+              } else {
+var $abc = "fish"
+                  $('#dingus2').val($abc)
+                 $('.forkmA').submit()              }
+            }
+          } else {
+            $('#uname').val('your password is too short')
+            $('#psw').val('')
+          }
+        } else {
+          $('#uname').val('your username is too short')
+        }
+      })
+
+      $('#dingus').on('click', function(){
+        $('#dingus').html('Your image has been saved, Thank You')
+      })
+    </script>
+  </body>
+</html>
